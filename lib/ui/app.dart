@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ttm01_flutter_dependency_injection/ui/bindings/initial_bindings.dart';
+import 'package:ttm01_flutter_dependency_injection/ui/pages/detail_page.dart';
 import 'package:ttm01_flutter_dependency_injection/ui/pages/home_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
           name: '/',
           page: () => const HomePage(),
         ),
+        GetPage(name: '/post', page: () => DetailPage(post: Get.arguments)),
       ],
       initialBinding: InitialBindings(),
     );
