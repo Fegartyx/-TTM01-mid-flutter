@@ -15,10 +15,15 @@ class PostListItem extends StatelessWidget {
   // build Post list item that has title, description and completed status
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(post.title),
-      subtitle:
-          Text(post.bodyText!, maxLines: 1, overflow: TextOverflow.ellipsis),
+    return GestureDetector(
+      onTap: () {
+        debugPrint('PostListItem: ${post.id} tapped');
+      },
+      child: ListTile(
+        title: Text(post.title),
+        subtitle:
+            Text(post.bodyText!, maxLines: 1, overflow: TextOverflow.ellipsis),
+      ),
     );
   }
 }

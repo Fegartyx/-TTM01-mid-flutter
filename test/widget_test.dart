@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
@@ -13,6 +15,7 @@ import 'widget_test.mocks.dart';
 @GenerateMocks([PostRepositoryImpl])
 void main() {
   final PostRepository mockedRepository = MockPostRepositoryImpl();
+  // HttpOverrides.global = null;
 
   Get.put<PostRepository>(mockedRepository);
 
@@ -31,7 +34,6 @@ void main() {
     );
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
-
     await tester.pumpAndSettle();
 
     // verify that the post title is displayed

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:ttm01_flutter_dependency_injection/common/exceptions.dart';
 import 'package:ttm01_flutter_dependency_injection/common/logger.dart';
@@ -9,6 +10,7 @@ abstract class PostRemoteDataSource {
 
 class PostRemoteDataSourceImpl extends GetConnect
     implements PostRemoteDataSource {
+  final Dio dio = Dio();
   PostRemoteDataSourceImpl() {
     super.baseUrl = 'https://jsonplaceholder.typicode.com';
   }
@@ -23,7 +25,12 @@ class PostRemoteDataSourceImpl extends GetConnect
   /// ServerException with details about the error.
   Future<List<PostModel>> fetchAll() async {
     logger.i('Fetching posts');
-    final response = await get('/posts');
+    final response = await get(
+      '/posts',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    );
     if (response.status.hasError) {
       logger.e('Error fetching posts: ${response.statusCode}',
           error: response.body);
@@ -34,4 +41,20 @@ class PostRemoteDataSourceImpl extends GetConnect
     logger.i('Posts fetched successfully', error: response.body.length);
     return (response.body as List).map((e) => PostModel.fromJson(e)).toList();
   }
+
+  // Future<List<PostModel>> fetchAll() async {
+  //   logger.i('Fetching posts');
+  //   final response = await dio.get(
+  //     'https://jsonplaceholder.typicode.com/posts',
+  //   );
+  //   if (response.statusCode != 200) {
+  //     logger.e('Error fetching posts: ${response.statusCode}',
+  //         error: response.headers);
+  //     throw ServerException(response.statusMessage!,
+  //         statusCode: response.statusCode!, details: response.headers);
+  //   }
+  //
+  //   logger.i('Posts fetched successfully', error: response.data.length);
+  //   return (response.data as List).map((e) => PostModel.fromJson(e)).toList();
+  // }
 }
