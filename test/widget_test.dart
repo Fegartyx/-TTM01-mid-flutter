@@ -31,7 +31,9 @@ void main() {
       ])),
     );
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MyApp(
+      flavor: '',
+    ));
     await tester.pumpAndSettle();
 
     // verify that the post title is displayed
