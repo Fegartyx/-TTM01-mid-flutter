@@ -10,6 +10,22 @@ android {
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
+    flavorDimensions "default"
+    productFlavors {
+        staging {
+            dimension "default"
+            applicationId "com.myblog.staging"
+            resValue "string", "app_name", "My Blog (Staging)"
+            versionNameSuffix "-staging"
+        }
+        production {
+            dimension "default"
+            applicationId "com.myblog"
+            resValue "string", "app_name", "My Blog"
+            versionNameSuffix ""
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
