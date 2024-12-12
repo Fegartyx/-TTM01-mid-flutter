@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ttm01_flutter_dependency_injection/domain/entities/post.dart';
 
 class PostListItem extends StatelessWidget {
@@ -16,8 +18,9 @@ class PostListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: const Key('postListItemGestureDetector'),
       onTap: () {
-        debugPrint('PostListItem: ${post.id} tapped');
+        Get.toNamed('/post', arguments: post);
       },
       child: ListTile(
         title: Text(post.title),
