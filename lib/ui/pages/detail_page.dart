@@ -3,7 +3,7 @@ import 'package:ttm01_flutter_dependency_injection/domain/entities/post.dart';
 
 class DetailPage extends StatelessWidget {
   final Post post;
-  const DetailPage({Key? key, required this.post}) : super(key: key);
+  const DetailPage({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {

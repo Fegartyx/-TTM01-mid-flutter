@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:ttm01_flutter_dependency_injection/domain/entities/post.dart';
 
 class PostListItem extends StatelessWidget {

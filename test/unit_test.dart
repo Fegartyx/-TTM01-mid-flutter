@@ -4,7 +4,7 @@ import 'package:ttm01_flutter_dependency_injection/ui/pages/detail_page.dart';
 
 void main() {
   test('Test Page Have Data', () {
-    DetailPage detailPage = DetailPage(
+    DetailPage detailPage = const DetailPage(
         post: Post(
             id: 1, title: 'my post title', body: 'my post body', userId: 1));
 
